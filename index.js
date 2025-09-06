@@ -80,15 +80,20 @@ console.log(fibonacci(6)); // 8
 
 //PALINDROME
 function isPalindrome(str) {
-  str = str.toLowerCase().replace(/[^a-z0-9]/g, ''); // clean string
-  if (str.length <= 1) return true; // base case
+  // Convert to lowercase and keep only letters and numbers
+  str = str.toLowerCase().split('').filter(char => (char >= 'a' && char <= 'z') || (char >= '0' && char <= '9')).join('');
+  // Base case
+  if (str.length <= 1) return true;
+  // Check the first and last characters
   if (str[0] !== str[str.length - 1]) return false;
-  return isPalindrome(str.slice(1, -1)); // recursive call
+  // Recursive call on the substring without the first and last characters
+  return isPalindrome(str.slice(1, -1));
 }
-// Example
-console.log("Example : palindrome")
+// Example usage
+console.log("Example: palindrome");
 console.log(isPalindrome("Racecar")); // true
 console.log(isPalindrome("Hello"));   // false
+console.log(isPalindrome("A man, a plan, a canal, Panama")); // true
 
 
 
